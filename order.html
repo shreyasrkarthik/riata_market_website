@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Pickup – Riata Market</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/4cba3cd0c0.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Header and nav reused from index -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo">
+        <span class="logo-r">R</span><span class="logo-iata">iata</span> <span class="logo-market">market</span>
+      </div>
+      <nav id="nav" class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="items.html">Shop</a></li>
+          <li><a href="order.html" class="active">Order Pickup</a></li>
+        </ul>
+      </nav>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Order for Pickup</h1>
+        <p>Quickly build your grocery list and we’ll get it ready for you to pick up in store.</p>
+      </div>
+    </section>
+
+    <section class="order-section">
+      <div class="container">
+        <!-- Order form. The form tag is mainly for semantics; submission is handled via JS -->
+        <form id="order-form">
+          <div class="order-grid">
+            <!-- Products selection column -->
+            <div class="order-products">
+              <h2>Select Items</h2>
+              <p class="small">Use the + and – buttons to adjust quantities. Leave at 0 if you don’t want an item.</p>
+              <div id="product-list" class="product-list">
+                <!-- JS populates the list of products here -->
+              </div>
+            </div>
+            <!-- Summary and customer details column -->
+            <div class="order-details">
+              <h2>Your Details</h2>
+              <div class="form-group">
+                <label for="customer-name">Name <span class="required">*</span></label>
+                <input type="text" id="customer-name" name="customer-name" required>
+              </div>
+              <div class="form-group">
+                <label for="customer-phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="customer-phone" name="customer-phone" required placeholder="512-555-1234">
+              </div>
+              <div class="form-group">
+                <label for="customer-email">Email</label>
+                <input type="email" id="customer-email" name="customer-email" placeholder="you@example.com">
+              </div>
+              <div class="form-group">
+                <label for="pickup-date">Pickup Date</label>
+                <input type="date" id="pickup-date" name="pickup-date" min="">
+              </div>
+              <div class="form-group">
+                <label for="pickup-time">Pickup Time</label>
+                <input type="time" id="pickup-time" name="pickup-time">
+              </div>
+              <h2>Order Summary</h2>
+              <div id="order-summary" class="order-summary">
+                <p>No items selected.</p>
+              </div>
+              <button type="submit" class="btn btn-primary full-width">Place Order</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer copied from index -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <p>12221&nbsp;Riata&nbsp;Trace&nbsp;Pkwy&nbsp;#180<br> Austin, TX&nbsp;78727</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="fas fa-phone"></i> (512) 257‑2222<br>
+        <i class="fas fa-envelope"></i> riatastop12221@gmail.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <p>Mon–Fri: 9 am – 9 pm<br>Sat–Sun: 10 am – 7 pm</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> Riata Market. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

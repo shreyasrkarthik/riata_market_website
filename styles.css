@@ -1,0 +1,581 @@
+/*
+ * Base styles and theme for the Riata Market website.
+ * Colours are chosen to reflect the green and orange palette from the
+ * reference website. Typography uses Montserrat for a clean, modern look.
+ */
+
+/* CSS variables for easy theming */
+:root {
+  --color-green: #4caf50;       /* primary green */
+  --color-dark-green: #2e7d32;  /* darker green for logo */
+  --color-orange: #f57c00;      /* accent orange */
+  --color-dark: #2b2b2b;        /* dark text */
+  --color-light: #fafafa;       /* light background */
+  --color-gray: #e0e0e0;        /* subtle separator */
+  --max-width: 1100px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+/* Container helper */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header & Navigation */
+.site-header {
+  background-color: #fff;
+  border-bottom: 1px solid var(--color-gray);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: baseline;
+  gap: 0.1rem;
+}
+.logo-r {
+  color: var(--color-orange);
+  font-size: 1.6rem;
+}
+.logo-iata {
+  color: var(--color-dark);
+}
+.logo-market {
+  color: var(--color-green);
+}
+
+.nav {
+  display: flex;
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav a {
+  text-decoration: none;
+  color: var(--color-dark);
+  font-weight: 600;
+  padding: 0.25rem 0;
+}
+.nav a.active,
+.nav a:hover {
+  color: var(--color-green);
+}
+
+/* Hamburger toggle */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--color-dark);
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  min-height: 60vh;
+  /* Use a decorative abstract image with our brand colours as the hero background */
+  background-image: url('images/hero-bg.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+/* A semi‑transparent colour overlay to unify the image with our green/orange palette */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-orange) 0%, var(--color-green) 100%);
+  opacity: 0.6;
+  z-index: 0;
+}
+.hero-overlay {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 800px;
+  z-index: 1;
+}
+.hero-subtitle {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: #e8e8e8;
+}
+.hero-title {
+  font-size: 2.6rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+.btn-primary {
+  background-color: var(--color-green);
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: var(--color-dark-green);
+  color: #fff;
+}
+.btn-secondary {
+  background-color: var(--color-orange);
+  color: #fff;
+}
+.btn-secondary:hover {
+  background-color: #e65100;
+  color: #fff;
+}
+.btn.full-width {
+  width: 100%;
+}
+
+/* About section */
+.about {
+  background-color: #fff;
+  padding: 3rem 0;
+}
+.about-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.about h2 {
+  font-size: 2rem;
+  color: var(--color-orange);
+  margin-bottom: 0.5rem;
+}
+.about p {
+  max-width: 700px;
+  margin-bottom: 1rem;
+  color: var(--color-dark);
+}
+.about-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Categories preview on home */
+.categories-preview {
+  background-color: var(--color-light);
+  padding: 3rem 0;
+  text-align: center;
+}
+.categories-preview h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-orange);
+}
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+.category-card {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--color-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.category-card img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+.category-card i {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-green);
+}
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Special banner */
+.special-banner {
+  background-color: var(--color-green);
+  color: #fff;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+.special-banner p {
+  font-size: 1.1rem;
+}
+
+/* Footer styles */
+.site-footer {
+  background-color: #fff;
+  border-top: 1px solid var(--color-gray);
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+.footer-col h4 {
+  color: var(--color-orange);
+  margin-bottom: 0.5rem;
+}
+.footer-col p {
+  color: var(--color-dark);
+  line-height: 1.4;
+}
+.footer-bottom {
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  color: var(--color-dark);
+  border-top: 1px solid var(--color-gray);
+}
+
+/* Page header for inner pages */
+.page-header {
+  background-color: var(--color-light);
+  padding: 2rem 0;
+  text-align: center;
+  border-bottom: 1px solid var(--color-gray);
+}
+
+/* Search bar styling on shop page */
+.search-container {
+  /* Provide more breathing room and a wider input so users can easily type long queries */
+  margin: 1.5rem auto;
+  max-width: 550px;
+}
+.search-container input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-gray);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.page-header h1 {
+  font-size: 2.2rem;
+  color: var(--color-orange);
+  margin-bottom: 0.5rem;
+}
+.page-header p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--color-dark);
+}
+
+/* Products page */
+.product-category {
+  padding: 2rem 0;
+}
+.category-title-block {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.category-title-block img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.category-title-block h2 {
+  font-size: 1.8rem;
+  color: var(--color-green);
+  margin: 0;
+}
+.product-category h2 {
+  font-size: 1.8rem;
+  color: var(--color-green);
+  margin-bottom: 1rem;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+.product-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.product-card i {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-orange);
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.product-card h3 {
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+/* Order page */
+.order-section {
+  padding: 2rem 0;
+}
+.order-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.order-products {
+  flex: 2;
+}
+.order-products h2 {
+  font-size: 1.5rem;
+  color: var(--color-green);
+  margin-bottom: 0.5rem;
+}
+.order-products .small {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+.product-list {
+  max-height: 50vh;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+.order-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-gray);
+}
+.order-item-name {
+  flex: 1;
+  font-size: 0.95rem;
+}
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.qty-controls button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.qty-minus {
+  background-color: var(--color-gray);
+  color: #444;
+}
+.qty-plus {
+  background-color: var(--color-green);
+}
+.qty-value {
+  width: 32px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.order-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.order-details h2 {
+  font-size: 1.5rem;
+  color: var(--color-green);
+  margin-bottom: 0.5rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+.form-group input {
+  padding: 0.5rem;
+  border: 1px solid var(--color-gray);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: var(--color-dark);
+}
+.order-summary {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  min-height: 100px;
+  font-size: 0.9rem;
+}
+.order-summary ul {
+  list-style: none;
+  padding-left: 0;
+}
+.order-summary li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+.required {
+  color: var(--color-orange);
+}
+
+/* Shop & Order page additional styles */
+/* Search bar styling on the shop page */
+.search-container {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.search-container input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--color-gray);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+/* Product category sections on the shop page */
+.product-category {
+  background-color: #fff;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--color-gray);
+}
+.product-category:last-of-type {
+  border-bottom: none;
+}
+.category-title-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.category-title-block img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+.category-title-block h2 {
+  font-size: 1.5rem;
+  color: var(--color-green);
+}
+.category-list .order-item {
+  margin-bottom: 0.75rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav ul {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+    padding: 1rem;
+    box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+    z-index: 99;
+  }
+  .nav.open ul {
+    transform: translateX(0);
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .nav ul li {
+    margin-bottom: 1rem;
+  }
+  .order-grid {
+    flex-direction: column;
+  }
+  .product-list {
+    max-height: 40vh;
+  }
+}

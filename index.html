@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riata Market &ndash; Austin’s Desi Grocery &amp; Convenience Store</title>
+  <!-- Google font for a clean, modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons (shopping cart, phone, etc.) -->
+  <script src="https://kit.fontawesome.com/4cba3cd0c0.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Header & navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo">
+        <!-- The logo is text based to match the branding colours from the source website -->
+        <span class="logo-r">R</span><span class="logo-iata">iata</span> <span class="logo-market">market</span>
+      </div>
+      <nav id="nav" class="nav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="items.html">Shop &amp; Order</a></li>
+        </ul>
+      </nav>
+      <!-- Hamburger button for mobile navigation -->
+      <button id="nav-toggle" class="nav-toggle" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero section with background image and overlay text -->
+    <section class="hero">
+      <div class="hero-overlay">
+        <!-- Updated tagline emphasising both convenience‑store drinks and desi staples -->
+        <h2 class="hero-subtitle">Essentials, Snacks, Drinks &amp; Desi Groceries</h2>
+        <h1 class="hero-title">Everything You Need, Just Around the Corner</h1>
+        <a href="items.html" class="btn btn-primary">Browse Products</a>
+      </div>
+    </section>
+
+    <!-- Intro/about section -->
+    <section class="about">
+      <div class="container about-container">
+        <h2>Welcome to Riata Market</h2>
+        <p>
+          Riata Market is your neighbourhood convenience store and desi grocery in the heart of
+          Austin. We carry a curated selection of Indian staples, spices, snacks and daily
+          essentials at fair prices. Whether you need to pick up ingredients for tonight’s dinner
+          or crave your favourite namkeen, we’ve got you covered.
+        </p>
+        <p>
+          We’re located at <strong>12221&nbsp;Riata&nbsp;Trace&nbsp;Parkway&nbsp;Suite&nbsp;#180, Austin, TX&nbsp;78727</strong>
+          and proudly serve the Riata community and surrounding neighbourhoods. Stop by, say
+          hello and discover a world of flavours close to home.
+        </p>
+        <div class="about-cta">
+          <a href="items.html" class="btn btn-primary">Shop &amp; Order Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category preview section -->
+    <section class="categories-preview">
+      <div class="container">
+        <h2>Shop by Category</h2>
+        <div class="categories-grid">
+          <!-- Each category card features a small photograph representative of the category instead of just an icon -->
+          <a href="items.html#spices" class="category-card">
+            <img src="images/spices.png" alt="Spices &amp; Masalas">
+            <h3>Spices &amp; Masalas</h3>
+          </a>
+          <a href="items.html#pulses" class="category-card">
+            <img src="images/lentils.png" alt="Pulses &amp; Lentils">
+            <h3>Pulses &amp; Lentils</h3>
+          </a>
+          <a href="items.html#rice" class="category-card">
+            <img src="images/rice.png" alt="Rice &amp; Flours">
+            <h3>Rice &amp; Flours</h3>
+          </a>
+          <a href="items.html#snacks" class="category-card">
+            <!-- Updated label to reflect a broader selection of convenience items like chips, candy and cookies -->
+            <img src="images/snacks.png" alt="Snacks &amp; Essentials">
+            <h3>Snacks &amp; Essentials</h3>
+          </a>
+          <a href="items.html#fresh" class="category-card">
+            <img src="images/fresh.png" alt="Fresh Produce">
+            <h3>Fresh Produce</h3>
+          </a>
+          <a href="items.html#drinks" class="category-card">
+            <img src="images/drinks.png" alt="Drinks &amp; Alcohol">
+            <h3>Drinks &amp; Alcohol</h3>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to action banner -->
+    <section class="special-banner">
+      <p><strong>Don’t miss out!</strong> Enjoy limited‑time store specials.</p>
+      <a href="items.html" class="btn btn-primary">See Deals</a>
+    </section>
+  </main>
+
+  <!-- Footer with contact information and links -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <p>12221&nbsp;Riata&nbsp;Trace&nbsp;Pkwy&nbsp;#180<br> Austin, TX&nbsp;78727</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="fas fa-phone"></i> (512) 257‑2222<br>
+        <i class="fas fa-envelope"></i> riatastop12221@gmail.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <p>Mon–Fri: 9 am – 9 pm<br>Sat–Sun: 10 am – 7 pm</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> Riata Market. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

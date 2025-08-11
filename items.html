@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop – Riata Market</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/4cba3cd0c0.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Header and nav reused from index -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo">
+        <span class="logo-r">R</span><span class="logo-iata">iata</span> <span class="logo-market">market</span>
+      </div>
+      <nav id="nav" class="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="items.html" class="active">Shop &amp; Order</a></li>
+        </ul>
+      </nav>
+      <button id="nav-toggle" class="nav-toggle" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main content area -->
+  <main id="shop-page">
+    <section class="page-header">
+      <div class="container">
+        <h1>Shop &amp; Order for Pickup</h1>
+        <p>Browse our aisles and build your order for convenient pickup.</p>
+        <!-- Search input to filter products -->
+        <div class="search-container">
+          <input type="text" id="product-search" placeholder="Search items…">
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories with items and quantity controls -->
+    <section id="spices" class="product-category">
+      <div class="container">
+        <div class="category-title-block">
+          <img src="images/spices.png" alt="Spices &amp; Masalas">
+          <h2>Spices &amp; Masalas</h2>
+        </div>
+        <div id="spices-list" class="category-list"></div>
+      </div>
+    </section>
+
+    <section id="pulses" class="product-category">
+      <div class="container">
+        <div class="category-title-block">
+          <img src="images/lentils.png" alt="Pulses &amp; Lentils">
+          <h2>Pulses &amp; Lentils</h2>
+        </div>
+        <div id="pulses-list" class="category-list"></div>
+      </div>
+    </section>
+
+    <section id="rice" class="product-category">
+      <div class="container">
+        <div class="category-title-block">
+          <img src="images/rice.png" alt="Rice &amp; Flours">
+          <h2>Rice &amp; Flours</h2>
+        </div>
+        <div id="rice-list" class="category-list"></div>
+      </div>
+    </section>
+
+    <section id="snacks" class="product-category">
+      <div class="container">
+        <div class="category-title-block">
+          <img src="images/snacks.png" alt="Snacks &amp; Essentials">
+          <h2>Snacks &amp; Essentials</h2>
+        </div>
+        <div id="snacks-list" class="category-list"></div>
+      </div>
+    </section>
+
+    <section id="fresh" class="product-category">
+      <div class="container">
+        <div class="category-title-block">
+          <img src="images/fresh.png" alt="Fresh Produce">
+          <h2>Fresh Produce</h2>
+        </div>
+        <div id="fresh-list" class="category-list"></div>
+      </div>
+    </section>
+
+    <section id="drinks" class="product-category">
+      <div class="container">
+        <div class="category-title-block">
+          <img src="images/drinks.png" alt="Drinks &amp; Alcohol">
+          <h2>Drinks &amp; Alcohol</h2>
+        </div>
+        <div id="drinks-list" class="category-list"></div>
+      </div>
+    </section>
+
+    <!-- Order details and summary -->
+    <section class="order-details-section">
+      <div class="container">
+        <h2>Order Details</h2>
+        <form id="order-form">
+          <div class="form-group">
+            <label for="customer-name">Name<span class="required">*</span></label>
+            <input type="text" id="customer-name" required>
+          </div>
+          <div class="form-group">
+            <label for="customer-phone">Phone<span class="required">*</span></label>
+            <input type="tel" id="customer-phone" required>
+          </div>
+          <div class="form-group">
+            <label for="pickup-date">Pickup Date<span class="required">*</span></label>
+            <input type="date" id="pickup-date" required>
+          </div>
+          <div class="form-group">
+            <label for="pickup-time">Pickup Time<span class="required">*</span></label>
+            <input type="time" id="pickup-time" required>
+          </div>
+          <div class="order-summary" id="order-summary">
+            <p>No items selected.</p>
+          </div>
+          <button type="submit" class="btn btn-primary">Place Order</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer copied from index -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col">
+        <h4>Visit Us</h4>
+        <p>12221&nbsp;Riata&nbsp;Trace&nbsp;Pkwy&nbsp;#180<br> Austin, TX&nbsp;78727</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><i class="fas fa-phone"></i> (512) 257‑2222<br>
+        <i class="fas fa-envelope"></i> riatastop12221@gmail.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <p>Mon–Fri: 9 am – 9 pm<br>Sat–Sun: 10 am – 7 pm</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> Riata Market. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
