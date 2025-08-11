@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
  * updates order summary and manages form submission.
  * @param {HTMLFormElement} form The order form element on the page
  */
-function initShopPage(form) {
+async function initShopPage(form) {
+  // Load stock images for each product
+  const imageMap = await fetch('imageMap.json').then(r => r.json()).catch(() => ({}));
   // Product catalogue organised by category. Each item has a unique id and name.
   const products = [
     // Spices & Masalas
@@ -113,15 +115,24 @@ function initShopPage(form) {
     fresh: document.getElementById('fresh-list'),
     drinks: document.getElementById('drinks-list')
   };
+  const productList = document.getElementById('product-list');
   const summaryContainer = document.getElementById('order-summary');
-  // Helper to build a product row with plus/minus controls
-  function buildRow(product) {
-    const row = document.createElement('div');
-    row.className = 'order-item';
-    row.dataset.id = product.id;
-    const nameSpan = document.createElement('span');
-    nameSpan.className = 'order-item-name';
-    nameSpan.textContent = product.name;
+  // Helper to build a product tile with image and quantity controls
+  function buildCard(product) {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.dataset.id = product.id;
+
+    const img = document.createElement('img');
+    img.src = imageMap[product.id] || 'https://picsum.photos/seed/' + product.id + '/100/100';
+    img.alt = product.name;
+    card.appendChild(img);
+
+    const nameHeading = document.createElement('h3');
+    nameHeading.className = 'product-name';
+    nameHeading.textContent = product.name;
+    card.appendChild(nameHeading);
+
     const controls = document.createElement('div');
     controls.className = 'qty-controls';
     const minusBtn = document.createElement('button');
@@ -140,8 +151,8 @@ function initShopPage(form) {
     controls.appendChild(minusBtn);
     controls.appendChild(qtyInput);
     controls.appendChild(plusBtn);
-    row.appendChild(nameSpan);
-    row.appendChild(controls);
+    card.appendChild(controls);
+
     // Click handlers to adjust quantities
     plusBtn.addEventListener('click', () => {
       cart[product.id] += 1;
@@ -155,13 +166,13 @@ function initShopPage(form) {
         updateSummary();
       }
     });
-    return row;
+    return card;
   }
   // Populate each category list with its products
   products.forEach(prod => {
-    const container = containers[prod.category];
+    const container = containers[prod.category] || productList;
     if (container) {
-      container.appendChild(buildRow(prod));
+      container.appendChild(buildCard(prod));
     }
   });
   // Function to refresh the order summary box
@@ -186,7 +197,7 @@ function initShopPage(form) {
     searchInput.addEventListener('input', () => {
       const query = searchInput.value.toLowerCase().trim();
       products.forEach(prod => {
-        const el = document.querySelector('.order-item[data-id="' + prod.id + '"]');
+        const el = document.querySelector('.product-card[data-id="' + prod.id + '"]');
         if (!el) return;
         if (!query || prod.name.toLowerCase().includes(query)) {
           el.style.display = '';
@@ -197,6 +208,7 @@ function initShopPage(form) {
       // Hide category sections if no items visible
       Object.keys(containers).forEach(cat => {
         const container = containers[cat];
+        if (!container) return;
         const visible = Array.from(container.children).some(child => child.style.display !== 'none');
         const section = document.getElementById(cat);
         if (section) {
