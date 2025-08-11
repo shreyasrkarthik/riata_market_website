@@ -114,35 +114,41 @@ function initShopPage(form) {
     drinks: document.getElementById('drinks-list')
   };
   const summaryContainer = document.getElementById('order-summary');
-  // Helper to build a product row with plus/minus controls
-  function buildRow(product) {
-    const row = document.createElement('div');
-    row.className = 'order-item';
-    row.dataset.id = product.id;
-    const nameSpan = document.createElement('span');
-    nameSpan.className = 'order-item-name';
-    nameSpan.textContent = product.name;
+  const checkoutBtn = document.getElementById('checkout-btn');
+  const cartCountEl = document.getElementById('cart-count');
+  // Build a product card with image and quantity controls
+  function buildCard(product) {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.dataset.id = product.id;
+
+    const img = document.createElement('img');
+    img.src = 'https://via.placeholder.com/150?text=' + encodeURIComponent(product.name);
+    img.alt = product.name;
+    card.appendChild(img);
+
+    const title = document.createElement('h3');
+    title.textContent = product.name;
+    card.appendChild(title);
+
     const controls = document.createElement('div');
-    controls.className = 'qty-controls';
+    controls.className = 'card-controls';
     const minusBtn = document.createElement('button');
     minusBtn.type = 'button';
-    minusBtn.className = 'qty-minus';
     minusBtn.textContent = '−';
     const qtyInput = document.createElement('input');
     qtyInput.type = 'text';
-    qtyInput.className = 'qty-value';
     qtyInput.readOnly = true;
+    qtyInput.className = 'qty-value';
     qtyInput.value = '0';
     const plusBtn = document.createElement('button');
     plusBtn.type = 'button';
-    plusBtn.className = 'qty-plus';
     plusBtn.textContent = '+';
     controls.appendChild(minusBtn);
     controls.appendChild(qtyInput);
     controls.appendChild(plusBtn);
-    row.appendChild(nameSpan);
-    row.appendChild(controls);
-    // Click handlers to adjust quantities
+    card.appendChild(controls);
+
     plusBtn.addEventListener('click', () => {
       cart[product.id] += 1;
       qtyInput.value = cart[product.id];
@@ -155,18 +161,21 @@ function initShopPage(form) {
         updateSummary();
       }
     });
-    return row;
+    return card;
   }
   // Populate each category list with its products
   products.forEach(prod => {
     const container = containers[prod.category];
     if (container) {
-      container.appendChild(buildRow(prod));
+      container.appendChild(buildCard(prod));
     }
   });
   // Function to refresh the order summary box
   function updateSummary() {
     const selected = products.filter(p => cart[p.id] > 0);
+    const count = selected.reduce((sum, item) => sum + cart[item.id], 0);
+    if (cartCountEl) cartCountEl.textContent = count;
+    if (checkoutBtn) checkoutBtn.style.display = count > 0 ? 'block' : 'none';
     if (selected.length === 0) {
       summaryContainer.textContent = 'No items selected.';
       return;
@@ -186,7 +195,7 @@ function initShopPage(form) {
     searchInput.addEventListener('input', () => {
       const query = searchInput.value.toLowerCase().trim();
       products.forEach(prod => {
-        const el = document.querySelector('.order-item[data-id="' + prod.id + '"]');
+        const el = document.querySelector('.product-card[data-id="' + prod.id + '"]');
         if (!el) return;
         if (!query || prod.name.toLowerCase().includes(query)) {
           el.style.display = '';
@@ -203,6 +212,11 @@ function initShopPage(form) {
           section.style.display = visible ? '' : 'none';
         }
       });
+    });
+  }
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', () => {
+      form.scrollIntoView({ behavior: 'smooth' });
     });
   }
   // Set pickup date to today and time to half an hour from now
